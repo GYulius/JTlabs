@@ -1,0 +1,10 @@
+ro\gilian\javatechlabs\listeners\AppContextListener.class
+ro\gilian\javatechlabs\servlets\CharacterListServlet.class
+ro\gilian\javatechlabs\servlets\FileUploadServlet.class
+ro\gilian\javatechlabs\JakartaRestConfiguration.class
+ro\gilian\javatechlabs\servlets\CaptchaServlet.class
+ro\gilian\javatechlabs\resources\JakartaEE8Resource.class
+ro\gilian\javatechlabs\filters\ResponseDecoratorFilter.class
+ro\gilian\javatechlabs\filters\ResponseDecoratorFilter$CharResponseWrapper.class
+ro\gilian\javatechlabs\servlets\GraphServlet.class
+ro\gilian\javatechlabs\filters\RequestLoggingFilter.class
