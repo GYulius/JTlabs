@@ -1,0 +1,202 @@
+Java_Technologies
+Labs / Commands
+
+Lab 1
+
+Errors on Windows 11 on Payara 5/6 and GlassFish, see the .zip archive
+
+VirtualBox - Ubuntu server:
+
+Install the required Java version
+java -version
+1.8
+
+update-java-alternatives --list
+1.8
+
+sudo add-apt-repository ppa:openjdk-r/ppa
+sudo apt-get update
+sudo apt install openjdk-11-jdk
+
+java -version
+11
+
+Install Maven
+
+mvn -v
+3.6.3
+---------------
+{ check newer version }
+downloaded 3.9.9 version
+ls
+cd Downloads
+
+tar xzvf apache-maven-3.9.9-src.tar.gz
+
+cd /etc
+ls
+sudo vi profile.d
+
+uname -a
+
+echo $PATH
+
+ls -l /usr/bin 
+
+sudo apt install maven
+
+{ !! error on new kernel }
+--------------------
+
+Installing Netbeans
+
+downloaded version 16
+sudo dpkg -i apache-netbeans_16-1_all.deb
+
+Installing / starting Payara
+
+downloaded payara-5.2022.5.zip
+
+mkdir -m 777 payara
+
+cd Downloads
+
+unzip payara-5.2022.5.zip -d ../payara
+
+cd ../payara/payara5/bin
+ls -l
+
+./asadmin start-domain
+
+Creating project
+
+bringing/checking dependencies into .pom
+
+creating servlet file / template
+
+reviewing errors
+
+clean and build 
+
+runn file to check - starts Payara server - opens page in browser 
+
+Remote repository:
+https://github.com/GYulius/Java_Tech_Labs.git
+
+
+git remote add origin https://github.com/GYulius/Java_Tech_Labs.git
+git branch -M main
+git push -u origin main
+
+
+install Github Desktop
+
+# UPDATE (2024-01-24)
+
+## Direct copy-paste from official instrubtions
+## Github Desktop for Ubuntu
+## Get the @shiftkey package feed
+wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
+## Install Github Desktop for Ubuntu
+sudo apt update && sudo apt install github-desktop
+
+--- On Windows 11:
+
+TCP    0.0.0.0:8080           0.0.0.0:0              LISTENING       7072
+as response to 
+netstat -aon | findstr "8080"
+
+find process using 8080
+tasklist /fi "PID eq 7072"
+gives
+Image Name                     PID Session Name        Session#    Mem Usage
+========================= ======== ================ =========== ============
+httpd.exe                     7072 Services                   0      7,568 K
+
+SEVERE|Payara 5.2022.5|javax.enterprise.system.core|_ThreadID=1;_ThreadName=main;_TimeMillis=1728972449340;_LevelValue=1000;_MessageID=NCLS-CORE-00019;|
+  Shutting down server due to startup exception
+java.net.BindException: Address already in use: bind
+
+taskkill /PID 7072 /F
+or
+modify the domain.xml configuration file:
+C:\payara5\glassfish\domains\domain1\config\domain.xml
+find if 8082 is free
+netstat -aon | findstr "8082"
+no results
+moving to 8082
+
+
+try Eclipse IDE / tomcat
+certUtil -hashfile file SHA512
+copy
+
+New-Item -ItemType Directory -Path "D:\1-master\2024-2026\1-ISST\Tehnologii_Java\tomcat"
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        10/15/2024  11:51 AM                tomcat
+
+icacls "D:\1-master\2024-2026\1-ISST\Tehnologii_Java\tomcat" /grant Everyone:F
+
+unpack
+
+cd to bin
+
+.\service.bat install
+
+.\tomcat9w.exe
+
+start
+
+C:\Users\andre\eclipse\jee-2024-03
+C:\Program Files\Java\jdk-17.0.12
+
+go to:
+C:\Users\andre\eclipse\jee-2024-03\
+
+.\eclipse.exe" -vm "C:\Program Files\Java\jdk-17.0.12\bin\javaw.exe"
+
+----
+If you frequently start Eclipse this way, consider creating a batch file to simplify the process.
+
+    Open Notepad (or any text editor).
+    Paste the command:
+@echo off
+"C:\Program Files\Eclipse\eclipse.exe" -vm "C:\Program Files\Java\jdk-17\bin\javaw.exe"
+Save the file with a .bat extension (e.g., start_eclipse.bat).
+You can now double-click this batch file to start Eclipse with Java 17.
+----
+
+
+
+set workspace
+
+Port 8005 required by Tomcat v9.0 Server at localhost is already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or change the port number(s).
+
+PS C:\Users\andre> taskkill /PID 19616 /F
+ERROR: The process with PID 19616 could not be terminated.
+Reason: Access is denied.
+
+C:\Users\andre\Documents\NetBeansProjects\lab1\target\CharacterListServlet-1.war
+
+http://desktop-14nc5ro:8082/CharacterListServlet-1/
+
+payara5\bin> .\asadmin start-domain
+
+lists all applications of type web.
+
+.\asadmin list-applications --type web
+CharacterListServlet-1  <health, metrics, openapi, web>
+Command list-applications executed successfully.
+
+Un-deploying an Application
+This example uninstalls the hellojsp application.
+
+.\asadmin undeploy CharacterListServlet-1
+Command undeploy executed successfully.
+
+ .\asadmin list-applications --type web
+Nothing to list.
+No applications are deployed to this target server.
+
